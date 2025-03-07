@@ -1,0 +1,80 @@
+{% extends 'browser/base.html' %}
+
+{% load static %}
+
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'browser/home.css' %}" />
+{% endblock %}
+
+{% block content %}
+
+    <div class="home-container">
+
+        <div class="home-container-1">
+            <h1><a href="{% url 'home' %}">Navigateur Web</a></h1>
+            <div class="home-container-1-1">
+                <form method="get" action="{% url 'home' %}" class="home-form-container">
+                    <input type="text" name="url" placeholder="Entrez une URL" required>
+                    <button type="submit" class="btn btn-success">Rechercher</button>
+                </form>
+            </div>
+            <div class="home-container-1-2">
+                <form action="{% url 'logout' %}" method="post">
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-danger">Se déconnecter</button>
+                </form>
+            </div>
+        </div>
+
+        <div id="home-container-2" class="home-container-2">
+            <div class="graph-container">
+                {{ graph_html|safe }}
+            </div>
+            <div class="graph-legende">
+                <h5 class="bold">Légende</h5>
+                <table>
+                    <tr>
+                        <td><div class="rond bleu"></div></td>
+                        <td>Liens externes</td>
+                    </tr>
+                    <tr>
+                        <td><div class="rond vert"></div></td>
+                        <td>Liens internes</td>
+                    </tr>
+                </table>
+            </div>
+            <div id="fullscreen" class="graph-fullscreen">
+                <i class="fas fa-expand"></i>
+            </div>
+            <div id="sortir-fullscreen" class="graph-fullscreen">
+                <i class="fas fa-times"></i>
+            </div>
+        </div>
+
+        <div class="home-container-3">
+            <div class="home-container-3-1">
+                <h3>Caractéristiques</h3>
+                <div>
+                    <p class="home-container-3-1-p">🔗 Liens internes : {{ liens_internes }}</p>
+                    <p class="home-container-3-1-p">🌍 Liens externes : {{ liens_externes }}</p>
+                    <p class="home-container-3-1-p">📸 Images : {{ images }}</p>
+                    <p class="home-container-3-1-p">📊 Tableaux : {{ tableaux }}</p>
+                </div>
+            </div>
+            <div class="home-container-3-2">
+                <h3>Historique de recherche</h3>
+                <ul>
+                    {% for item in historique %}
+                        <li>
+                            <a href="{{ item.url }}" target="_blank">{{ item.url }}</a> - 
+                            <span>{{ item.date|date:"d/m/Y H:i" }}</span>
+                        </li>
+                    {% empty %}
+                        <p>Aucune recherche récente.</p>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

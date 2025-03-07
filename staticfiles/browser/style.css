@@ -1,0 +1,46 @@
+/* Paramètres globaux */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+html, body {
+    height: 100%;
+}
+
+/* Police d'écriture */
+@font-face {
+    font-family: 'Marianne';
+    src: url('/static/fonts/Marianne-Regular.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Marianne';
+    src: url('/static/fonts/Marianne-Bold.woff2') format('woff2');
+    font-weight: bold;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Marianne';
+    src: url('/static/fonts/Marianne-Light.woff2') format('woff2');
+    font-weight: 300; /* Light */
+    font-style: normal;
+}
+body {
+    font-family: 'Marianne', sans-serif !important;
+}
+button, input, textarea, select {
+    font-family: inherit;
+    font-size: inherit;
+}
+
+/* Page de connexion */
+.container-login {
+    margin: 0 400px 0 400px;
+}
+
+/* Page d'inscription */
+.container-registration {
+    margin: 0 350px 0 350px;
+}

@@ -1,0 +1,46 @@
+{% extends 'browser/base.html' %}
+
+{% block content %}
+
+    <div class="container-login">
+        <div class="container mt-5">
+            <div class="card shadow p-4">
+                <h2 class="text-center">Connexion</h2>
+                <form method="post">
+                    {% csrf_token %}
+                    <!-- Affichage des erreurs générales -->
+                    {% if form.non_field_errors %}
+                        <div class="alert alert-danger">
+                            {% for error in form.non_field_errors %}
+                                {{ error }}
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+                    <!-- Nom d'utilisateur -->
+                    <div class="mb-3">
+                        {{ form.username.label_tag }}
+                        {{ form.username }}
+                        {% for error in form.username.errors %}
+                            <div class="text-danger">{{ error }}</div>
+                        {% endfor %}
+                    </div>
+                    <!-- Mot de passe -->
+                    <div class="mb-3">
+                        {{ form.password.label_tag }}
+                        {{ form.password }}
+                        {% for error in form.password.errors %}
+                            <div class="text-danger">{{ error }}</div>
+                        {% endfor %}
+                    </div>
+                    <!-- Boutons -->
+                    <div class="btn-group mt-3 w-100">
+                        <button type="submit" class="btn btn-success">Se connecter</button>
+                        <button type="reset" class="btn btn-danger">Annuler</button>
+                        <a href="{% url 'registration' %}" class="btn btn-primary">Créer un compte</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
