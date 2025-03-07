@@ -105,9 +105,6 @@ django-navigateur/
 
     Le projet utilise SQLite par défaut. Vous pouvez exécuter les migrations pour créer la base de données :
     ```bash
-    python manage.py makemigrations
-    ```
-    ```bash
     python manage.py migrate
     ```
     
