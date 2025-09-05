@@ -22,7 +22,7 @@ prompt_toolkit==3.0.50
 pure_eval==0.2.3
 Pygments==2.19.1
 pyvis==0.3.2
-requests==2.32.3
+requests==2.32.4
 soupsieve==2.6
 sqlparse==0.5.3
 stack-data==0.6.3
